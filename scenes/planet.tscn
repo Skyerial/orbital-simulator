@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://fipvi7jmpvvp"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_hweyk"]
+[ext_resource type="Shader" path="res://scenes/planet.gdshader" id="2_qcnjq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgt16"]
+render_priority = 0
+shader = ExtResource("2_qcnjq")
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mas56"]
+next_pass = SubResource("ShaderMaterial_xgt16")
+albedo_color = Color(1, 1, 0.341176, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_87uuc"]
+
+[node name="planet" type="Node3D"]
+script = ExtResource("1_hweyk")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material = SubResource("StandardMaterial3D_mas56")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_87uuc")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

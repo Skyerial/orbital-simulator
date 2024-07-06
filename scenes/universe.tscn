@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi1ck8jygfhoy"]
+
+[ext_resource type="PackedScene" uid="uid://fipvi7jmpvvp" path="res://scenes/planet.tscn" id="1_wu3ny"]
+[ext_resource type="PackedScene" uid="uid://coqawtkxw0pgj" path="res://scenes/planet_controller.tscn" id="2_wcvo8"]
+[ext_resource type="PackedScene" uid="uid://cl7ldu8nagt1p" path="res://scenes/ui.tscn" id="3_n4as0"]
+
+[node name="universe" type="Node3D"]
+
+[node name="planet_controller" parent="." instance=ExtResource("2_wcvo8")]
+
+[node name="planet" parent="planet_controller" instance=ExtResource("1_wu3ny")]
+
+[node name="ui" parent="." instance=ExtResource("3_n4as0")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.13305)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+light_energy = 16.0
+spot_range = 4096.0
+spot_angle = 38.3
