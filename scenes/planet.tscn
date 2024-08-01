@@ -1,24 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://fipvi7jmpvvp"]
+[gd_scene load_steps=5 format=3 uid="uid://fipvi7jmpvvp"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_hweyk"]
-[ext_resource type="Shader" path="res://scenes/planet.gdshader" id="2_qcnjq"]
+[ext_resource type="Material" uid="uid://duv5ke8hu7pje" path="res://scenes/highlight_shader_material.tres" id="2_bjbvn"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgt16"]
-render_priority = 0
-shader = ExtResource("2_qcnjq")
-shader_parameter/strength = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mas56"]
-next_pass = SubResource("ShaderMaterial_xgt16")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxu2w"]
+resource_local_to_scene = true
 albedo_color = Color(1, 1, 0.341176, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_87uuc"]
 
 [node name="planet" type="Node3D"]
 script = ExtResource("1_hweyk")
+highlight_shader = ExtResource("2_bjbvn")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-material = SubResource("StandardMaterial3D_mas56")
+material = SubResource("StandardMaterial3D_vxu2w")
 
 [node name="Area3D" type="Area3D" parent="."]
 

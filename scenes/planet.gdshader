@@ -1,5 +1,4 @@
 shader_type spatial;
-uniform float strength;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -8,7 +7,7 @@ void vertex() {
 void fragment() {
 	// Called for every pixel the material is visible on.
     ALBEDO = vec3(1.0, 1.0, 1.0);
-    ALPHA = strength;
+    ALPHA = 0.5;
 }
 
 //void light() {
